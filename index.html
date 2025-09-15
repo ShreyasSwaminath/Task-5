@@ -1,0 +1,2176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Delights - Premium Confectionery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables */
+        :root {
+            --bg: #ffffff;
+            --text: #4a2b2b;
+            --muted: #a67f7f;
+            --accent: #d46a6a;
+            --dark: #4a2b2b;
+            --light: #fff6f6;
+            --radius: 16px;
+            --shadow: 0 16px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Reset and Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: min(1100px, 92%);
+            margin-inline: auto;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section h2 {
+            font-size: clamp(1.8rem, 2.5vw, 2.5rem);
+            margin: 0 0 20px;
+            text-align: center;
+            color: var(--dark);
+        }
+
+        .card {
+            background: var(--bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            filter: brightness(0.95);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--dark);
+            color: white;
+        }
+
+        /* Header Styles */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: saturate(180%) blur(10px);
+            border-bottom: 1px solid #eee;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: var(--dark);
+            text-decoration: none;
+            font-size: 1.8rem;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover, .nav a.active {
+            color: var(--accent);
+        }
+
+        .hamburger {
+            display: none;
+            background: transparent;
+            border: none;
+            width: 40px;
+            height: 40px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            position: absolute;
+            left: 8px;
+            right: 8px;
+            height: 3px;
+            background: var(--dark);
+            transition: 0.3s;
+            border-radius: 3px;
+        }
+
+        .hamburger span:nth-child(1) {
+            top: 14px;
+        }
+
+        .hamburger span:nth-child(2) {
+            top: 22px;
+        }
+
+        .hamburger span:nth-child(3) {
+            top: 30px;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 80vh;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('Screenshot 2025-09-14 195427.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            border-radius: var(--radius);
+            margin: 20px 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.35));
+            border-radius: var(--radius);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin: 0 0 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            margin: 0 0 30px;
+        }
+
+        /* Menu Styles */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: white;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .menu-item {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: var(--radius);
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: var(--radius);
+            margin-bottom: 15px;
+        }
+
+        .menu-item h3 {
+            margin: 15px 0 10px;
+            color: var(--dark);
+            font-size: 1.3rem;
+        }
+
+        .menu-item p {
+            font-size: 0.95rem;
+            color: var(--muted);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .menu-item span {
+            font-weight: bold;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-highlights {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .about-highlights li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .about-highlights li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .about-image {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Carousel Section */
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius);
+            margin-top: 40px;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .slide {
+            min-width: 100%;
+            flex: 0 0 auto;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .slide-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            z-index: 10;
+        }
+
+        .carousel-control.prev {
+            left: 20px;
+        }
+
+        .carousel-control.next {
+            right: 20px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .carousel-dots button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: none;
+            background: #ddd;
+            cursor: pointer;
+        }
+
+        .carousel-dots button.active {
+            background: var(--accent);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: var(--light);
+            text-align: center;
+            padding: 60px 0;
+            border-radius: var(--radius);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--muted);
+        }
+
+        .testimonial-card .customer {
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        /* Reservation Form */
+        .reservation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .reservation-form {
+            padding: 30px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font: inherit;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(212, 106, 106, 0.15);
+        }
+
+        /* Blog Styles */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .blog-image div {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .blog-content {
+            padding: 20px;
+        }
+
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .blog-meta i {
+            margin-right: 5px;
+        }
+
+        .blog-card h3 {
+            margin: 0 0 10px;
+            font-size: 1.3rem;
+        }
+
+        .blog-card p {
+            margin-bottom: 15px;
+            color: var(--muted);
+        }
+
+        .read-more {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .read-more i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+
+        .read-more:hover i {
+            transform: translateX(3px);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer h3, .footer h4 {
+            margin: 0 0 20px;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .newsletter {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .newsletter input {
+            padding: 12px 15px;
+            border-radius: 5px;
+            border: none;
+            font: inherit;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px 0 0;
+            text-align: center;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        /* Visit Us Page Styles */
+        .visit-hero {
+            position: relative;
+            min-height: 50vh;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('Screenshot 2025-09-15 222206.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            border-radius: var(--radius);
+            margin: 20px 0;
+        }
+
+        .pricing-table {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pricing-card h3 {
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 2rem;
+            color: var(--accent);
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .pricing-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 980px) {
+            .about-grid, 
+            .reservation-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                background: white;
+                width: 250px;
+                height: calc(100vh - 80px);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s;
+                padding: 30px;
+            }
+            
+            .nav.open {
+                right: 0;
+            }
+            
+            .nav .nav-links {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            
+            .menu-grid, .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .carousel-control {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-table {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                min-height: 60vh;
+            }
+            
+            .visit-hero {
+                min-height: 40vh;
+            }
+            
+            .hero-content {
+                padding: 10px;
+            }
+            
+            .carousel-dots {
+                flex-wrap: wrap;
+            }
+            
+            .filter-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Page Specific Styles */
+        #menu-page, #blog-page, #visit-page {
+            display: none;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: var(--radius);
+            max-width: 800px;
+            position: relative;
+            box-shadow: var(--shadow);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: var(--muted);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .blog-detail-image {
+            width: 100%;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .blog-detail-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            color: var(--muted);
+        }
+
+        .blog-detail-meta i {
+            margin-right: 5px;
+        }
+
+        .blog-detail-content p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .blog-detail-content h4 {
+            margin: 25px 0 15px;
+            color: var(--dark);
+        }
+
+        .blog-detail-content ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        .blog-detail-content li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+   <header class="header" id="top">
+        <div class="container header-inner">
+            <a class="logo" href="#" onclick="showPage('home-page')">Sweet<span>Delights</span></a>
+            
+            <nav class="nav" id="nav">
+                <ul class="nav-links">
+                    <li><a href="#" onclick="showPage('home-page')" class="active">Home</a></li>
+                    <li><a href="#about" onclick="showPage('home-page')">About</a></li>
+                    <li><a href="#" onclick="showPage('visit-page')">Visit Us</a></li>
+                    <li><a href="#" onclick="showPage('menu-page')">Menu</a></li>
+                    <li><a href="#" onclick="showPage('blog-page')">Blog</a></li>
+                    <li><a href="#contact" onclick="showPage('home-page')">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+
+    <!-- Home Page Content -->
+    <div id="home-page">
+        <!-- Hero Section -->
+        <section id="home" class="hero" role="banner" aria-label="Hero section">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+                <h1>Handcrafted Sweets Made With Love</h1>
+                <p>Indulge in our delicious collection of Indian Sweets and Snacks</p>
+                <a href="#" onclick="showPage('visit-page')" class="btn btn-primary">Book a Visit</a>
+            </div>
+        </section>
+
+
+        <!-- About Section -->
+        <section id="about" class="about section">
+            <div class="container">
+                <h2>Who We Are</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>Sweet Delights is a modern confectionery destination offering a seasonal menu of classic treats and innovative creations. We focus on quality ingredients, warm hospitality, and memorable experiences.</p>
+                        <ul class="about-highlights">
+                            <li>Fresh, locally sourced ingredients</li>
+                            <li>Open kitchen & cozy ambience</li>
+                            <li>Vegetarian & vegan options</li>
+                            <li>Custom orders for special occasions</li>
+                        </ul>
+                    </div>
+                    <div class="about-image">
+                        <img src="Screenshot 2025-09-15 183801.png" alt="Sweet Delights store interior" style="width: 100%; height: auto; display: block;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Menu Preview Section -->
+       <section id="menu-preview" class="menu section">
+            <div class="container">
+                <h2>Our Signature Sweets</h2>
+                <div class="menu-grid">
+                    <article class="menu-item card">
+                        <img src="Screenshot 2025-09-15 185014.png" alt="Kaju Katli - Thin diamond-shaped cashew fudge" style="width: 100%; height: 200px; object-fit: cover;">
+                        <div class="menu-content">
+                            <h3>Kaju Katli</h3>
+                            <p>Thin diamond-shaped cashew fudge with silver leaf garnish</p>
+                            <span>Rs. 149/- (100g)</span>
+                        </div>
+                    </article>
+                    
+                    <article class="menu-item card">
+                        <img src="Screenshot 2025-09-15 184725.png" alt="Gulkand Pedha - Milk sweet with rose petal preserve" style="width: 100%; height: 200px; object-fit: cover;">
+                        <div class="menu-content">
+                            <h3>Gulkand Pedha</h3>
+                            <p>Milk sweet infused with rose petal preserve and delicate flavors</p>
+                            <span>Rs. 1,000/-</span>
+                        </div>
+                    </article>
+                    
+                    <article class="menu-item card">
+                        <img src="Screenshot 2025-09-15 184800.png" alt="Malai Pedha - Creamy milk sweet" style="width: 100%; height: 200px; object-fit: cover;">
+                        <div class="menu-content">
+                            <h3>Malai Pedha</h3>
+                            <p>Creamy, soft milk sweet with a rich texture</p>
+                            <span>Rs. 1,000/-</span>
+                        </div>
+                    </article>
+                </div>
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="#" onclick="showPage('menu-page')" class="btn btn-primary">View Full Menu</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Specials Carousel -->
+        <section id="specials" class="specials section">
+            <div class="container">
+                <h2>Seasonal Specials</h2>
+                <div class="carousel" id="carousel">
+                    <button class="carousel-control prev" aria-label="Previous slide">&lt;</button>
+                    <div class="carousel-track">
+                        <article class="slide card">
+                            <img src="Screenshot 2025-09-15 214659.png" alt="Holiday Collection - Special treats for the festive season" style="width: 100%; height: 300px; object-fit: cover;">
+                            <div class="slide-content">
+                                <h3>Holiday Collection</h3>
+                                <p>Special treats for the festive season</p>
+                            </div>
+                        </article>
+                        
+                        <article class="slide card">
+                            <img src="Screenshot 2025-09-15 214418.png" alt="Summer Refreshments - Cool summer special treats" style="width: 100%; height: 300px; object-fit: cover;">
+                            <div class="slide-content">
+                                <h3>Summer Refreshments</h3>
+                                <p>Have a taste of our summer special treats</p>
+                            </div>
+                        </article>
+                        
+                        <article class="slide card">
+                            <img src="Screenshot 2025-09-15 214446.png" alt="Custom Cakes - Personalized creations for special occasions" style="width: 100%; height: 300px; object-fit: cover;">
+                            <div class="slide-content">
+                                <h3>Custom Cakes</h3>
+                                <p>Personalized creations for your special occasions</p>
+                            </div>
+                        </article>
+                    </div>
+                    <button class="carousel-control next" aria-label="Next slide">&gt;</button>
+                    <div class="carousel-dots" id="carouselDots" aria-label="Carousel Pagination"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials section">
+            <div class="container">
+                <h2>What Our Customers Say</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <p>"The best sweets I've ever tasted! Their artisan chocolates are simply divine. I order them for every special occasion."</p>
+                        <div class="customer">- Priya M.</div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p>"I hosted a party last week and ordered their dessert platters. Everyone was raving about the quality and presentation!"</p>
+                        <div class="customer">- Rajesh K.</div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p>"As a chocolatier myself, I'm very particular about sweets. Sweet Delights exceeds all expectations especially pedas with their creative flavors."</p>
+                        <div class="customer">- Anjali P.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <!-- Menu Page Content -->
+    <div id="menu-page">
+        <!-- Menu Section -->
+        <section class="menu-section container section">
+            <h2>Our Sweet & Savory Menu</h2>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all">All</button>
+                <button class="filter-btn" data-category="sweets">Sweets</button>
+                <button class="filter-btn" data-category="snacks">Snacks</button>
+            </div>
+            
+            <div class="menu-grid">
+                <!-- Traditional Indian Sweets -->
+                <div class="menu-item" data-category="sweets">
+                    <img src="Screenshot 2025-09-15 184618.png" alt="Rajwadi Pedha - Traditional milk-based sweet" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3>Rajwadi Pedha</h3>
+                    <p>Traditional milk-based sweet with rich, creamy texture</p>
+                    <span>Rs. 800/-</span>
+                </div>
+                
+                <div class="menu-item" data-category="sweets">
+                    <img src="Screenshot 2025-09-15 184725.png" alt="Gulkand Pedha - Rose-infused milk sweet" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3>Gulkand Pedha</h3>
+                    <p>Milk sweet infused with rose petal preserve and delicate flavors</p>
+                    <span>Rs. 1,000/-</span>
+                </div>
+                
+                <div class="menu-item" data-category="sweets">
+                    <img src="Screenshot 2025-09-15 184800.png" alt="Malai Pedha - Creamy milk sweet" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3>Malai Pedha</h3>
+                    <p>Creamy, soft milk sweet with a rich texture</p>
+                    <span>Rs. 1,000/-</span>
+                </div>
+
+                <div class="menu-item" data-category="sweets">
+                    <img src="Screenshot 2025-09-15 184800.png" alt="Amrut Malai Pedha" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3>Amrut Malai Pedha</h3>
+                    <p>Heavenly creamy sweet with a divine taste</p>
+                    <span>Rs. 900/-</span>
+                </div>
+
+                <div class="menu-item" data-category="sweets">
+                    <img src="Screenshot 2025-09-15 184854.png" alt="Shahi Pedha" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3>Shahi Pedha</h3>
+                    <p>Royal milk sweet fit for kings, with rich flavor</p>
+                    <span>Rs. 1,000/-</span>
+                </div>
+
+                <div class="menu-item" data-category="sweets">
+                    <img src="Screenshot 2025-09-15 184927.png" alt="Kesar Puri Pedha" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3>Kesar Puri Pedha</h3>
+                    <p>Saffron-infused milk sweet with delicate texture</p>
+                    <span>Rs. 800/-</span>
+                </div>
+
+                <div class="menu-item" data-category="sweets">
+                    <img src="Screenshot 2025-09-15 185014.png" alt="Kaju Katli" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3>Kaju Katli (100 g)</h3>
+                    <p>Thin diamond-shaped cashew fudge with silver leaf garnish</p>
+                    <span>Rs. 149/-</span>
+                </div>
+
+                <div class="menu-item" data-category="sweets">
+                    <img src="Screenshot 2025-09-15 185052.png" alt="Mawa Kesar Peda" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3>Mawa Kesar Peda (250 g)</h3>
+                    <p>Rich milk fudge infused with saffron and cardamom</p>
+                    <span>Rs. 250/-</span>
+                </div>
+
+                <div class="menu-item" data-category="sweets">
+                    <img src="Screenshot 2025-09-15 185131.png" alt="Paneer Jalebi" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3>Paneer Jalebi (250 g)</h3>
+                    <p>Crispy cottage cheese swirls soaked in saffron syrup</p>
+                    <span>Rs. 220/-</span>
+                </div>
+
+                <div class="menu-item" data-category="sweets">
+                    <img src="Screenshot 2025-09-15 185238.png" alt="Malai Kesar Peda" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3>Malai Kesar Peda (250 g)</h3>
+                    <p>Creamy milk sweet with saffron and pistachio garnish</p>
+                    <span>Rs. 250/-</span>
+                </div>
+
+                <div class="menu-item" data-category="sweets">
+                    <img src="Screenshot 2025-09-15 185318.png" alt="Malai White Peda" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3>Malai White Peda (250 g)</h3>
+                    <p>Classic white milk sweet with a rich, creamy texture</p>
+                    <span>Rs. 250/-</span>
+                </div>
+
+                <div class="menu-item" data-category="sweets">
+                    <img src="Screenshot 2025-09-15 185418.png" alt="Artisan Chocolates" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3>Artisan Chocolates</h3>
+                    <p>Hand-dipped chocolates with unique flavor combinations</p>
+                    <span>Rs. 289/-</span>
+                </div>
+
+                <div class="menu-item" data-category="sweets">
+                    <img src="Screenshot 2025-09-15 185455.png" alt="Gourmet Cookies" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3>Gourmet Cookies</h3>
+                    <p>Buttery cookies with premium chocolate chunks</p>
+                    <span>Rs. 189/-</span>
+                </div>
+
+                    <!-- Snacks Category -->
+                <div class="menu-item" data-category="snacks">
+                    <img src="Screenshot 2025-09-15 185559.png" alt="Punjabi Samosa" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3>Punjabi Samosa [2 Pieces]</h3>
+                    <p>Spiced potato filling in crisp pastry, served with chutney</p>
+                    <span>Rs. 70/-</span>
+                </div>
+
+                <div class="menu-item" data-category="snacks">
+                    <img src="Screenshot 2025-09-15 185624.png" alt="Cheese Corn Ball" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3>Cheese Corn Ball [250 g]</h3>
+                    <p>Crispy fried balls with cheesy corn filling</p>
+                    <span>Rs. 140/-</span>
+                </div>
+
+                <div class="menu-item" data-category="snacks">
+                    <img src="Screenshot 2025-09-15 185729.png" alt="Paneer Chilli Samosa" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3>Paneer Chilli Samosa [250 g]</h3>
+                    <p>Samosa filled with spicy paneer and green chilli</p>
+                    <span>Rs. 140/-</span>
+                </div>
+
+                <div class="menu-item" data-category="snacks">
+                    <img src="Screenshot 2025-09-15 185855.png" alt="Khaman Dhokla" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3>Khaman Dhokla [250 g]</h3>
+                    <p>Soft, fluffy steamed chickpea flour cakes</p>
+                    <span>Rs. 100/-</span>
+                    <div style="font-size: 0.8rem; color: green; margin-top: 5px;">Veg Preparation</div>
+                </div>
+
+                <div class="menu-item" data-category="snacks">
+                    <img src="Screenshot 2025-09-15 185817.png" alt="Paneer Pakoda" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3>Paneer Pakoda [250 g]</h3>
+                    <p>Crispy fried paneer cubes in gram flour batter</p>
+                    <span>Rs. 140/-</span>
+                </div>
+
+                <div class="menu-item" data-category="snacks">
+                    <img src="Screenshot 2025-09-15 185943.png" alt="Khandvi" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3>Khandvi [250 g]</h3>
+                    <p>Gram flour rolls with tempered mustard seeds</p>
+                    <span>Rs. 100/-</span>
+                </div>
+
+                <div class="menu-item" data-category="snacks">
+                    <img src="Screenshot 2025-09-15 190032.png" alt="Pizza Puff" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3>Pizza Puff [2 Pieces]</h3>
+                    <p>Flaky pastry filled with pizza-style toppings</p>
+                    <span>Rs. 110/-</span>
+                </div>
+
+                <div class="menu-item" data-category="snacks">
+                    <img src="Screenshot 2025-09-15 190051.png" alt="Veg Humsafar" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3>Veg Humsafar [2 Pieces]</h3>
+                    <p>Assorted vegetable filling in crisp pastry</p>
+                    <span>Rs. 90/-</span>
+                </div>
+
+                <div class="menu-item" data-category="snacks">
+                    <img src="Screenshot 2025-09-15 190126.png" alt="American Roll" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3>American Roll</h3>
+                    <p>Western-style vegetable roll with special sauce</p>
+                    <span>Rs. 30/-</span>
+                </div>
+
+                <div class="menu-item" data-category="snacks">
+                    <img src="Screenshot 2025-09-15 190222.png" alt="Picnic Samosa" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3>Picnic Samosa</h3>
+                    <p>Special mini samosas perfect for outings</p>
+                    <span>Rs. 15/-</span>
+                </div>
+
+                <div class="menu-item" data-category="snacks">
+                    <img src="Screenshot 2025-09-15 190255.png" alt="Paneer Veg Cutlet" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3>Paneer Veg Cutlet</h3>
+                    <p>Crispy paneer and vegetable patties</p>
+                    <span>Rs. 40/-</span>
+                </div>
+
+                <div class="menu-item" data-category="snacks">
+                    <img src="Screenshot 2025-09-15 190407.png" alt="Kothimbir Vadi" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3>Kothimbir Vadi</h3>
+                    <p>Steamed cilantro and chickpea flour squares</p>
+                    <span>Rs. 360/-</span>
+                </div>
+
+                <div class="menu-item" data-category="snacks">
+                    <img src="Screenshot 2025-09-15 190441.png" alt="Kothimbeer Pasanda" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3>Kothimbeer Pasanda</h3>
+                    <p>Cilantro-based savory bites with spices</p>
+                    <span>Rs. 30/-</span>
+                </div>
+
+                <div class="menu-item" data-category="snacks">
+                    <img src="Screenshot 2025-09-15 190540.png" alt="Sandwich Dhokla" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3>Sandwich Dhokla</h3>
+                    <p>Layered dhokla with chutney filling</p>
+                    <span>Rs. 500/-</span>
+                </div>
+
+                <div class="menu-item" data-category="snacks">
+                    <img src="Screenshot 2025-09-15 190623.png" alt="Paneer Dhokla" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3>Paneer Dhokla</h3>
+                    <p>Soft steamed cakes with paneer infusion</p>
+                    <span>Rs. 600/-</span>
+                </div>
+
+                <div class="menu-item" data-category="snacks">
+                    <img src="Screenshot 2025-09-15 190643.png" alt="Corn Samosa" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3>Corn Samosa</h3>
+                    <p>Crispy samosas filled with sweet corn</p>
+                    <span>Rs. 500/-</span>
+                </div>
+
+                <div class="menu-item" data-category="snacks">
+                    <img src="Screenshot 2025-09-15 190728.png" alt="Kobi Samosa" style="width: 100%; height: 200px; object-fit: cover;">
+                    <h3>Kobi Samosa</h3>
+                    <p>Cabbage-filled savory pastries</p>
+                    <span>Rs. 25/-</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+            
+            
+                <!-- Blog Page Content -->
+     <div id="blog-page">
+        <section class="blog-section container section">
+            <h2>Indian Sweets & Delicacies Blog</h2>
+            <p style="text-align: center; margin-bottom: 40px; color: var(--muted);">Discover the rich heritage, traditions, and artistry behind India's diverse sweet culture</p>
+            
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-image">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> June 15, 2023</span>
+                            <span><i class="far fa-user"></i> Chef Priya</span>
+                        </div>
+                        <h3>The Art of Traditional Mithai Making</h3>
+                        <p>Discover the intricate process of creating authentic Indian sweets and what makes them so special.</p>
+                        <a href="#" class="read-more" data-blog-id="1">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <div style="background-color: #fff5e6; height: 100%; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-hands" style="font-size: 60px; color: #d46a6a;"></i>
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> May 28, 2023</span>
+                            <span><i class="far fa-user"></i> Master Chef Ravi</span>
+                        </div>
+                        <h3>Festive Sweet Traditions Across India</h3>
+                        <p>Explore the regional sweet traditions that make Indian festivals so deliciously diverse.</p>
+                        <a href="#" class="read-more" data-blog-id="2">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <div style="background-color: #e6f7ff; height: 100%; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-leaf" style="font-size: 60px; color: #d46a6a;"></i>
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> April 10, 2023</span>
+                            <span><i class="far fa-user"></i> Nutritionist Meera</span>
+                        </div>
+                        <h3>Healthy Twists on Classic Indian Sweets</h3>
+                        <p>Learn how we create healthier versions of traditional mithai without compromising on taste.</p>
+                        <a href="#" class="read-more" data-blog-id="3">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <div style="background-color: #f0e6ff; height: 100%; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-utensils" style="font-size: 60px; color: #d46a6a;"></i>
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> March 22, 2023</span>
+                            <span><i class="far fa-user"></i> Food Historian Amit</span>
+                        </div>
+                        <h3>The History of Indian Sweets: A Royal Legacy</h3>
+                        <p>Journey through the royal kitchens that gave birth to India's most beloved sweets.</p>
+                        <a href="#" class="read-more" data-blog-id="4">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <div style="background-color: #ffe6f2; height: 100%; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-seedling" style="font-size: 60px; color: #d46a6a;"></i>
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> February 15, 2023</span>
+                            <span><i class="far fa-user"></i> Chef Neha</span>
+                        </div>
+                        <h3>Seasonal Sweets: Celebrating with Nature's Bounty</h3>
+                        <p>How traditional Indian sweets change with the seasons and local ingredients.</p>
+                        <a href="#" class="read-more" data-blog-id="5">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <div style="background-color: #e6ffe6; height: 100%; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-heart" style="font-size: 60px; color: #d46a6a;"></i>
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> January 5, 2023</span>
+                            <span><i class="far fa-user"></i> Founder Rajesh</span>
+                        </div>
+                        <h3>Our Journey: Preserving Authentic Indian Sweet Recipes</h3>
+                        <p>The story of how traditional recipes passed down through generations became Sweet Delights.</p>
+                        <a href="#" class="read-more" data-blog-id="6">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </div>
+
+    <!-- Visit Us Page Content -->
+    <div id="visit-page">
+    <!-- Hero Section -->
+    <section class="visit-hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1>Visit Sweet Delights</h1>
+            <p>Experience our confectionery paradise with guided tours and sweet tastings</p>
+        </div>
+    </section>
+
+    <!-- Location & Hours -->
+    <section class="section">
+        <div class="container">
+            <h2>Location & Hours</h2>
+            <div class="about-grid">
+                <div>
+                    <h3>Our Address</h3>
+                    <p>7, Krishna Sudama Niwas, Naupada</p>
+                    <p>Phone: +01 98705 43218</p>
+                    <p>Email: info@sweetdelights.com</p>
+                    
+                    <h3 style="margin-top: 30px;">Opening Hours</h3>
+                    <p>Monday - Friday: 9:00 AM - 8:00 PM</p>
+                    <p>Saturday - Sunday: 10:00 AM - 9:00 PM</p>
+                    <p>Holiday hours may vary</p>
+                </div>
+                <div class="about-image">
+                    <img src="Screenshot 2025-09-15 221717.png" style="width: 100%; height: 400px; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Process -->
+    <section class="section section-dark">
+        <div class="container">
+            <h2>Registration Process</h2>
+            <p style="text-align: center; margin-bottom: 40px; color: #fff;">We require registration for all visits to ensure we provide the best possible experience for our guests.</p>
+            
+            <div class="about-grid">
+                <div>
+                    <div class="about-highlights">
+                        <li><strong>Submit Registration Form:</strong> Complete our online form with your preferred date and time at least 48 hours in advance.</li>
+                        <li><strong>Payment:</strong> Secure your reservation with payment of the registration fee.</li>
+                        <li><strong>Confirmation:</strong> You'll receive a confirmation email with visit details and a unique registration code.</li>
+                    </div>
+                    <p style="margin-top: 20px;"><em>Walk-in visitors are welcome based on availability, but registered guests receive priority access and additional benefits.</em></p>
+                </div>
+                <div class="about-image">
+                    <img src="Screenshot 2025-09-15 221958.png" style="width: 100%; height: 400px; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fee Structure -->
+    <section class="section">
+        <div class="container">
+            <h2>Registration Fees</h2>
+            <p style="text-align: center; margin-bottom: 40px;">We charge a nominal registration fee to maintain our facilities and ensure quality experiences for all guests. This fee is deducted from any purchase of $50 or more during your visit.</p>
+            
+            <div class="pricing-table">
+                <div class="pricing-card">
+                    <h3>Standard Visit</h3>
+                    <div class="price">Rs.150</div>
+                    <p>Per Person</p>
+                    <ul class="pricing-features">
+                        <li>Priority seating</li>
+                        <li>Complimentary tasting flight</li>
+                        <li>Facility access</li>
+                        <li>Retail shopping</li>
+                    </ul>
+                    <button class="btn btn-primary">Select</button>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Guided Tour</h3>
+                    <div class="price">Rs.300</div>
+                    <p>Per Person</p>
+                    <ul class="pricing-features">
+                        <li>All Standard benefits</li>
+                        <li>30-minute guided kitchen tour</li>
+                        <li>Expert consultation</li>
+                        <li>10% discount on purchases</li>
+                    </ul>
+                    <button class="btn btn-primary">Select</button>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Premium Experience</h3>
+                    <div class="price">Rs.500</div>
+                    <p>Per Person</p>
+                    <ul class="pricing-features">
+                        <li>All Guided Tour benefits</li>
+                        <li>Hands-on decorating session</li>
+                        <li>Souvenir apron</li>
+                        <li>15% discount on purchases</li>
+                        <li>Complimentary beverage</li>
+                    </ul>
+                    <button class="btn btn-primary">Select</button>
+                </div>
+            </div>
+            
+            <p style="text-align: center; margin-top: 30px; color: var(--muted);"><em>Children under 3 visit free of charge. Group rates available for parties of 8 or more.</em></p>
+        </div>
+    </section>
+
+    <!-- Cancellation Policy -->
+    <section class="section section-dark">
+        <div class="container">
+            <h2>Cancellation Policy</h2>
+            <p style="text-align: center; margin-bottom: 40px; color: #fff;">We understand that plans change. Our cancellation policy is designed to be fair while allowing us to accommodate other guests.</p>
+            
+            <div class="about-grid">
+                <div>
+                    <div class="about-highlights">
+                        <li><strong>More than 24 hours notice:</strong> Full refund of registration fee</li>
+                        <li><strong>Less than 24 hours notice:</strong> 50% refund of registration fee</li>
+                        <li><strong>No-show:</strong> No refund issued</li>
+                        <li><strong>Special circumstances:</strong> Illness or emergencies handled case-by-case with documentation</li>
+                    </div>
+                    <p style="margin-top: 20px;"><em>To cancel or reschedule, please call us at least 24 hours in advance at +01 98705 43218 and provide your registration code.</em></p>
+                </div>
+                <div class="about-image">
+                    <img src="Screenshot 2025-09-15 221439.png" alt="Cancellation policy" style="width: 100%; height: 400px; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form -->
+    <section class="section">
+        <div class="container">
+            <h2>Register for Your Visit</h2>
+            
+            <div class="reservation-grid">
+                <div class="reservation-form card">
+                    <h3>Registration Form</h3>
+                    <form id="visit-registration-form">
+                        <div class="grid-2">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                            <input type="email" name="email" placeholder="Email Address" required>
+                        </div>
+                        <div class="grid-2">
+                            <input type="tel" name="phone" placeholder="Phone Number" required>
+                            <input type="number" name="guests" placeholder="Number of Guests" min="1" max="20" required>
+                        </div>
+                        <div class="grid-2">
+                            <input type="date" name="date" required min="<?php echo date('Y-m-d', strtotime('+2 days')); ?>">
+                            <input type="time" name="time" required>
+                        </div>
+                        <select name="experience-type" aria-label="Experience Type" required>
+                            <option value="">Select Experience Type</option>
+                            <option value="standard">Standard Visit ($5.00)</option>
+                            <option value="guided">Guided Tour ($15.00)</option>
+                            <option value="premium">Premium Experience ($25.00)</option>
+                        </select>
+                        <textarea name="special-requests" placeholder="Special requests or dietary restrictions" rows="3" style="width: 100%; margin: 15px 0; padding: 12px 15px; border-radius: 8px; border: 1px solid #ddd; font-family: inherit;"></textarea>
+                        
+                        <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                            <h4>Terms & Conditions</h4>
+                            <p style="font-size: 0.9rem;">By registering, you agree to our cancellation policy and terms of service. Registration fees are non-transferable without 24 hours notice. Children must be supervised at all times. Please inform us of any allergies or dietary restrictions in advance.</p>
+                            <label style="display: flex; align-items: center; margin-top: 10px;">
+                                <input type="checkbox" required style="margin-right: 10px;">
+                                <span>I agree to the terms and conditions</span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Complete Registration</button>
+                    </form>
+                </div>
+                <div class="reservation-info">
+                    <h3>What to Expect</h3>
+                    <p>Your visit to Sweet Delights will be a memorable experience filled with sweet delights:</p>
+                    
+                    <div class="about-highlights">
+                        <li>Warm welcome from our staff</li>
+                        <li>Introduction to our confectionery process</li>
+                        <li>Guided tasting of seasonal specialties</li>
+                        <li>Opportunity to see our artisans at work</li>
+                        <li>Time to explore our retail space</li>
+                        <li>Q&A session with our confectioners</li>
+                    </div>
+                    
+                    <h3 style="margin-top: 30px;">Preparation Tips</h3>
+                    <p>To make the most of your visit:</p>
+                    <div class="about-highlights">
+                        <li>Arrive 10 minutes before your scheduled time</li>
+                        <li>Wear comfortable shoes for standing</li>
+                        <li>Bring your camera (photography allowed)</li>
+                        <li>Notify us of allergies in advance</li>
+                        <li>Consider public transportation as parking is limited</li>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- FAQ Section -->
+        <section class="section section-dark">
+            <div class="container">
+                <h2>Frequently Asked Questions</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Do I need to register if I just want to purchase items to go?</div>
+                    <div class="faq-answer">No, our retail counter welcomes walk-in customers for purchases without registration. Registration is only required for tours and tasting experiences.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Can I modify my registration after booking?</div>
+                    <div class="faq-answer">Yes, you can modify your reservation up to 24 hours before your scheduled visit by calling us at +01 98705 43218.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Is the registration fee per person or per group?</div>
+                    <div class="faq-answer">The registration fee is per person, except for children under 3 who are free.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question>Do you accommodate dietary restrictions?</div>
+                    <div class="faq-answer">Yes, we offer vegan, gluten-free, and nut-free options. Please indicate any restrictions in your registration form.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Where should I park when visiting?</div>
+                    <div class="faq-answer">We have dedicated parking behind our building, with additional street parking available on Candy Lane.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Are pets allowed?</div>
+                    <div class="faq-answer">Only service animals are permitted inside our facility.</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Blog Detail Modal -->
+    <div id="blog-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" id="close-modal">&times;</button>
+            <div id="blog-detail-content"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container footer-grid">
+            <div>
+                <h3>Sweet Delights</h3>
+                <p>7, Krishna Sudama Niwas, opposite Railway Station, Naupada, Thane West, Thane</p>
+                <p>Open: 9:00 AM - 9:00 PM</p>
+            </div>
+            
+            <div>
+                <h4>Contact</h4>
+                <p>+01 98705 43218</p>
+                <p>info@sweetdelights.com</p>
+            </div>
+            
+            <div>
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#" onclick="showPage('home-page')">Home</a></li>
+                    <li><a href="#about" onclick="showPage('home-page')">About Us</a></li>
+                    <li><a href="#" onclick="showPage('visit-page')">Visit Us</a></li>
+                    <li><a href="#" onclick="showPage('menu-page')">Menu</a></li>
+                    <li><a href="#" onclick="showPage('blog-page')">Blog</a></li>
+                    <li><a href="#contact" onclick="showPage('home-page')">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4>Newsletter</h4>
+                <form id="newsletter-form" class="newsletter">
+                    <input type="email" placeholder="Your email" required>
+                    <button class="btn btn-primary" type="submit">Subscribe</button>
+                    <p id="newsletter-msg" class="form-msg" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; <span id="year"></span> Sweet Delights - All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Page Navigation
+        function showPage(pageId) {
+            document.getElementById('home-page').style.display = 'none';
+            document.getElementById('menu-page').style.display = 'none';
+            document.getElementById('blog-page').style.display = 'none';
+            document.getElementById('visit-page').style.display = 'none';
+            document.getElementById(pageId).style.display = 'block';
+            
+            // Update active nav link
+            document.querySelectorAll('.nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Add active class to current page link
+            if (pageId === 'home-page') {
+                document.querySelector('.nav-links li:first-child a').classList.add('active');
+            } else if (pageId === 'visit-page') {
+                document.querySelector('.nav-links li:nth-child(3) a').classList.add('active');
+            } else if (pageId === 'menu-page') {
+                document.querySelector('.nav-links li:nth-child(4) a').classList.add('active');
+            } else if (pageId === 'blog-page') {
+                document.querySelector('.nav-links li:nth-child(5) a').classList.add('active');
+            }
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        // Mobile Navigation
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('nav');
+        
+        hamburger.addEventListener('click', () => {
+            const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+            hamburger.setAttribute('aria-expanded', !isExpanded);
+            nav.classList.toggle('open');
+        });
+        
+        // Menu Filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const menuItems = document.querySelectorAll('.menu-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-category');
+                
+                // Show/hide menu items based on category
+                menuItems.forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Simple Carousel Functionality
+        const carousel = document.getElementById('carousel');
+        if (carousel) {
+            const track = carousel.querySelector('.carousel-track');
+            const slides = carousel.querySelectorAll('.slide');
+            const dotsContainer = carousel.querySelector('.carousel-dots');
+            const prevBtn = carousel.querySelector('.prev');
+            const nextBtn = carousel.querySelector('.next');
+            
+            let currentIndex = 0;
+            
+            // Create dots for carousel
+            slides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.addEventListener('click', () => {
+                    goToSlide(i);
+                });
+                dotsContainer.appendChild(dot);
+            });
+            
+            const dots = dotsContainer.querySelectorAll('button');
+            
+            function updateCarousel() {
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // Update dots
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === currentIndex);
+                });
+            }
+            
+            function goToSlide(index) {
+                currentIndex = index;
+                if (currentIndex >= slides.length) currentIndex = 0;
+                if (currentIndex < 0) currentIndex = slides.length - 1;
+                updateCarousel();
+            }
+            
+            function nextSlide() {
+                goToSlide(currentIndex + 1);
+            }
+            
+            function prevSlide() {
+                goToSlide(currentIndex - 1);
+            }
+            
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+            
+            // Auto advance carousel
+            setInterval(nextSlide, 5000);
+            
+            // Initialize carousel
+            updateCarousel();
+        }
+        
+        // Form handling
+        const reservationForm = document.getElementById('reservation-form');
+        const visitRegistrationForm = document.getElementById('visit-registration-form');
+        const newsletterForm = document.getElementById('newsletter-form');
+        const newsletterMsg = document.getElementById('newsletter-msg');
+        
+        if (reservationForm) {
+            reservationForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for your reservation! We will confirm shortly.');
+                reservationForm.reset();
+            });
+        }
+        
+        if (visitRegistrationForm) {
+            visitRegistrationForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for registering to visit us! We will send a confirmation email shortly.');
+                visitRegistrationForm.reset();
+            });
+        }
+        
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = newsletterForm.querySelector('input[type="email"]').value;
+                
+                // Simulate form submission
+                newsletterMsg.textContent = 'Thank you for subscribing!';
+                newsletterForm.reset();
+                
+                // Clear message after 3 seconds
+                setTimeout(() => {
+                    newsletterMsg.textContent = '';
+                }, 3000);
+            });
+        }
+        
+        // Animation for elements on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.menu-item, .testimonial-card, .card, .blog-card, .pricing-card');
+            
+            elements.forEach(element => {
+                const position = element.getBoundingClientRect();
+                
+                // If element is in viewport
+                if (position.top < window.innerHeight - 100) {
+                    element.style.opacity = 1;
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Initialize elements for animation
+        const animatedElements = document.querySelectorAll('.menu-item, .testimonial-card, .card, .blog-card, .pricing-card');
+        animatedElements.forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.5s, transform 0.5s';
+        });
+        
+        // Listen for scroll events
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Trigger once on load
+        window.addEventListener('load', animateOnScroll);
+
+        // Blog detail functionality
+        const blogModal = document.getElementById('blog-modal');
+        const closeModalBtn = document.getElementById('close-modal');
+        const blogDetailContent = document.getElementById('blog-detail-content');
+        const readMoreLinks = document.querySelectorAll('.read-more');
+
+        // Blog content data - Updated for Indian sweets
+        const blogContent = {
+            1: {
+                title: "The Art of Traditional Mithai Making",
+                author: "Chef Priya",
+                date: "June 15, 2023",
+                imageColor: "#ffe6ee",
+                icon: "fa-mortar-pestle",
+                content: `
+                    <div class="blog-detail-image" style="background-color: #ffe6ee;">
+                        <i class="fas fa-mortar-pestle" style="font-size: 100px; color: #d46a6a;"></i>
+                    </div>
+                    <div class="blog-detail-meta">
+                        <span><i class="far fa-calendar"></i> June 15, 2023</span>
+                        <span><i class="far fa-user"></i> Chef Priya</span>
+                    </div>
+                    <div class="blog-detail-content">
+                        <p>Creating authentic Indian mithai is both an art and a science that has been perfected over centuries. At Sweet Delights, we take pride in preserving these traditional methods while adding our own creative touches.</p>
+                        
+                        <h4>Traditional Techniques</h4>
+                        <p>The process begins with sourcing the finest ingredients - pure khoya (reduced milk), premium nuts, aromatic spices, and natural flavorings. Unlike Western desserts that rely heavily on baking, Indian sweets often involve slow cooking, reduction, and careful temperature control.</p>
+                        
+                        <p>One of the most important techniques is the preparation of khoya, which forms the base of many Indian sweets. We slowly simmer full-fat milk for hours until it reduces to a thick, granular consistency that gives mithai its characteristic richness.</p>
+                        
+                        <h4>Signature Sweets</h4>
+                        <p>Some of our most popular traditional creations include:</p>
+                        <ul>
+                            <li><strong>Kaju Katli:</strong> Thin diamond-shaped cashew fudge delicately flavored with cardamom</li>
+                            <li><strong>Gulab Jamun:</strong> Soft milk-solid dumplings soaked in rose-flavored sugar syrup</li>
+                            <li><strong>Rasgulla:</strong> Spongy cottage cheese balls in light sugar syrup</li>
+                            <li><strong>Besan Ladoo:</strong> Sweet gram flour balls with ghee, sugar, and cardamom</li>
+                            <li><strong>Mysore Pak:</strong> Rich ghee-based sweet with chickpea flour</li>
+                        </ul>
+                        
+                        <p>Each sweet is carefully handcrafted and often decorated with edible silver leaf (varak) and finely chopped nuts, making them as beautiful as they are delicious.</p>
+                        
+                        <p>We invite you to visit our kitchen to see these traditional techniques in action and perhaps even try your hand at creating your own mithai masterpiece!</p>
+                    </div>
+                `
+            },
+            2: {
+                title: "Festive Sweet Traditions Across India",
+                author: "Master Chef Ravi",
+                date: "May 28, 2023",
+                imageColor: "#fff5e6",
+                icon: "fa-hands",
+                content: `
+                    <div class="blog-detail-image" style="background-color: #fff5e6;">
+                        <i class="fas fa-hands" style="font-size: 100px; color: #d46a6a;"></i>
+                    </div>
+                    <div class="blog-detail-meta">
+                        <span><i class="far fa-calendar"></i> May 28, 2023</span>
+                        <span><i class="far fa-user"></i> Master Chef Ravi</span>
+                    </div>
+                    <div class="blog-detail-content">
+                        <p>India's diverse cultural landscape is reflected in its festive sweet traditions. Each region and festival has its own special sweets that are deeply intertwined with cultural and religious significance.</p>
+                        
+                        <h4>Regional Specialties</h4>
+                        <p>Across India's vast geography, sweet traditions vary dramatically:</p>
+                        <ul>
+                            <li><strong>North India:</strong> Rich, milk-based sweets like Peda, Barfi, and Rabri</li>
+                            <li><strong>West India:</strong> Nut-intensive sweets like Shrikhand and Basundi from Maharashtra, Mohanthal from Gujarat</li>
+                            <li><strong>East India:</strong> Cheese-based sweets like Rasgulla and Sandesh from Bengal, Chhena Poda from Odisha</li>
+                            <li><strong>South India:</strong> Rice and jaggery-based sweets like Mysore Pak, Payasam, and Boondi Ladoo</li>
+                        </ul>
+                        
+                        <h4>Festival Specials</h4>
+                        <p>Indian festivals are incomplete without their signature sweets:</p>
+                        <ul>
+                            <li><strong>Diwali:</strong> The festival of lights features an array of sweets like Ladoo, Kaju Katli, and various Barfis</li>
+                            <li><strong>Holi:</strong> The colorful spring festival is celebrated with Gujiya, Thandai, and Malpua</li>
+                            <li><strong>Raksha Bandhan:</strong> Sisters prepare sweets like Sheera, Ladoo, and Kheer for their brothers</li>
+                            <li><strong>Durga Puja:</strong> Bengal's biggest festival features special Bhog and Narkel Naru</li>
+                            <li><strong>Ganesh Chaturthi:</strong> Modak, Lord Ganesha's favorite sweet, takes center stage</li>
+                        </ul>
+                        
+                        <h4>Seasonal Celebrations</h4>
+                        <p>Many Indian sweets are tied to seasonal harvests and agricultural cycles:</p>
+                        <ul>
+                            <li><strong>Makar Sankranti:</strong> Celebrated with Til Ladoo and Gur Rewdi made from freshly harvested sugarcane</li>
+                            <li><strong>Pongal:</strong> The Tamil harvest festival features Sakkarai Pongal (sweet rice dish)</li>
+                            <li><strong>Onam:</strong> Kerala's harvest festival includes a grand sadya feast with multiple payasams</li>
+                        </ul>
+                        
+                        <p>At Sweet Delights, we honor these traditions by creating authentic festival sweets using traditional recipes passed down through generations.</p>
+                    </div>
+                `
+            },
+            3: {
+                title: "Healthy Twists on Classic Indian Sweets",
+                author: "Nutritionist Meera",
+                date: "April 10, 2023",
+                imageColor: "#e6f7ff",
+                icon: "fa-leaf",
+                content: `
+                    <div class="blog-detail-image" style="background-color: #e6f7ff;">
+                        <i class="fas fa-leaf" style="font-size: 100px; color: #d46a6a;"></i>
+                    </div>
+                    <div class="blog-detail-meta">
+                        <span><i class="far fa-calendar"></i> April 10, 2023</span>
+                        <span><i class="far fa-user"></i> Nutritionist Meera</span>
+                    </div>
+                    <div class="blog-detail-content">
+                        <p>As more people embrace healthier lifestyles, the demand for nutritious versions of traditional Indian sweets has grown. At Sweet Delights, we've spent years perfecting recipes that maintain authentic flavors while offering better nutritional profiles.</p>
+                        
+                        <h4>Ingredient Innovations</h4>
+                        <p>We've discovered amazing alternatives that create the same rich textures and flavors as traditional mithai:</p>
+                        <ul>
+                            <li><strong>Natural Sweeteners:</strong> Using dates, jaggery, and honey instead of refined sugar</li>
+                            <li><strong>Nut Flours:</strong> Almond and coconut flour instead of refined flour in some preparations</li>
+                            <li><strong>Reduced Fat:</strong> Using minimal ghee and oil while maintaining traditional taste</li>
+                            <li><strong>Milk Alternatives:</strong> Creating vegan versions with almond milk, coconut milk, or soy milk</li>
+                        </ul>
+                        
+                        <h4>Nutritional Benefits</h4>
+                        <p>Our healthier sweets offer several advantages over traditional versions:</p>
+                        <ul>
+                            <li>Lower glycemic index from natural sweeteners</li>
+                            <li>Higher protein content from nuts and milk solids</li>
+                            <li>Rich in healthy fats from nuts and seeds</li>
+                            <li>Added fiber from whole food ingredients</li>
+                            <li>No artificial colors or preservatives</li>
+                        </ul>
+                        
+                        <h4>Popular Healthy Options</h4>
+                        <p>Some of our most requested healthier sweets include:</p>
+                        <ul>
+                            <li><strong>Date and Nut Rolls:</strong> Natural sweetness from dates with protein-rich nuts</li>
+                            <li><strong>Jaggery-based Ladoos:</strong> Traditional sweets made with mineral-rich jaggery</li>
+                            <li><strong>Baked Gujiya:</strong> Festival favorite with baked instead of fried outer covering</li>
+                            <li><strong>Sugar-free Sandesh:</strong> Bengali classic sweetened with stevia or erythritol</li>
+                            <li><strong>Multigrain Halwa:</strong> Traditional semolina pudding made with multigrain flour</li>
+                        </ul>
+                        
+                        <p>Whether you're managing dietary restrictions or simply looking for healthier options, we have delicious alternatives that let you enjoy traditional Indian sweets guilt-free!</p>
+                    </div>
+                `
+            },
+            4: {
+                title: "The History of Indian Sweets: A Royal Legacy",
+                author: "Food Historian Amit",
+                date: "March 22, 2023",
+                imageColor: "#f0e6ff",
+                icon: "fa-utensils",
+                content: `
+                    <div class="blog-detail-image" style="background-color: #f0e6ff;">
+                        <i class="fas fa-utensils" style="font-size: 100px; color: #d46a6a;"></i>
+                    </div>
+                    <div class="blog-detail-meta">
+                        <span><i class="far fa-calendar"></i> March 22, 2023</span>
+                        <span><i class="far fa-user"></i> Food Historian Amit</span>
+                    </div>
+                    <div class="blog-detail-content">
+                        <p>The history of Indian sweets is as rich and diverse as the country itself, with roots stretching back thousands of years to ancient royal kitchens and temple offerings.</p>
+                        
+                        <h4>Ancient Origins</h4>
+                        <p>References to sweets appear in ancient Indian texts like the Vedas and epics like the Mahabharata. The word "mithai" itself comes from Sanskrit, reflecting its ancient origins. Early sweets were often made from honey, fruits, and rice, sweetened with sugarcane juice or date palm toddy.</p>
+                        
+                        <p>Temples played a crucial role in developing sweet traditions, as sweets were offered to deities as prasad (blessed food). This religious connection led to the creation of many regional specialties that are still popular today.</p>
+                        
+                        <h4>Mughal Influence</h4>
+                        <p>The Mughal era (16th-18th centuries) brought significant changes to Indian sweets. The Mughals introduced:</p>
+                        <ul>
+                            <li>Rich, milk-based sweets using khoya (reduced milk)</li>
+                            <li>Sophisticated techniques like slow cooking in copper vessels</li>
+                            <li>Use of precious ingredients like saffron, silver leaf, and exotic nuts</li>
+                            <li>Delicate sweets like Phirni, Shahi Tukda, and various halwas</li>
+                        </ul>
+                        
+                        <p>The royal kitchens of Awadh (Lucknow) and Hyderabad became centers of culinary innovation, creating sweets fit for emperors.</p>
+                        
+                        <h4>Colonial Era Innovations</h4>
+                        <p>The colonial period introduced new ingredients and techniques:</p>
+                        <ul>
+                            <li>Refined sugar became more widely available</li>
+                            <li>European baking techniques influenced sweets like cakes and pastries</li>
+                            <li>Portuguese influence in Goa led to creations like Bebinca</li>
+                            <li>British tea culture popularized sweet snacks served with tea</li>
+                        </ul>
+                        
+                        <h4>Regional Specializations</h4>
+                        <p>Different regions developed their own specialties based on local ingredients and cultural influences:</p>
+                        <ul>
+                            <li><strong>Bengal:</strong> Mastered chhena (cottage cheese) sweets like Rasgulla and Sandesh</li>
+                            <li><strong>Tamil Nadu:</strong> Developed unique rice-based sweets like Aval Kesari and Kozhukattai</li>
+                            <li><strong>Gujarat:</strong> Performed mohanthal and basundi made with local dairy products</li>
+                            <li><strong>Punjab:</strong> Created rich, ghee-based sweets like Pinni and Gajar ka Halwa</li>
+                        </ul>
+                        
+                        <p>At Sweet Delights, we honor this rich history by preserving traditional recipes while adding our own creative interpretations for modern palates.</p>
+                    </div>
+                `
+            },
+            5: {
+                title: "Seasonal Sweets: Celebrating with Nature's Bounty",
+                author: "Chef Neha",
+                date: "February 15, 2023",
+                imageColor: "#ffe6f2",
+                icon: "fa-seedling",
+                content: `
+                    <div class="blog-detail-image" style="background-color: #ffe6f2;">
+                        <i class="fas fa-seedling" style="font-size: 100px; color: #d46a6a;"></i>
+                    </div>
+                    <div class="blog-detail-meta">
+                        <span><i class="far fa-calendar"></i> February 15, 2023</span>
+                        <span><i class="far fa-user"></i> Chef Neha</span>
+                    </div>
+                    <div class="blog-detail-content">
+                        <p>Traditional Indian sweets have always been closely tied to the seasons, with recipes developed to celebrate nature's bounty at different times of the year. At Sweet Delights, we honor this connection by creating seasonal specialties that highlight the best ingredients each season has to offer.</p>
+                        
+                        <h4>Winter Delights</h4>
+                        <p>Winter is the prime season for Indian sweets, with festivals and celebrations creating high demand:</p>
+                        <ul>
+                            <li><strong>Gajar ka Halwa:</strong> Made with fresh winter carrots, milk, and nuts</li>
+                            <li><strong>Gond ke Ladoo:</strong> Energy-boosting sweets made with edible gum, nuts, and jaggery</li>
+                            <li><strong>Til ke Ladoo:</strong> Sesame seed sweets that provide warmth during cold months</li>
+                            <li><strong>Moong Dal Halwa:</strong> Rich lentil-based pudding perfect for winter celebrations</li>
+                        </ul>
+                        
+                        <h4>Summer Refreshments</h4>
+                        <p>Summer calls for lighter, cooler sweets that provide relief from the heat:</p>
+                        <ul>
+                            <li><strong>Shrikhand:</strong> Chilled yogurt-based sweet flavored with cardamom and saffron</li>
+                            <li><strong>Fruit Sandesh:</strong> Bengali cottage cheese sweets with seasonal fruits like mango</li>
+                            <li><strong>Kulfi:</strong> Traditional Indian ice cream in various flavors</li>
+                            <li><strong>Aamras:</strong> Sweet mango pulp served as a dessert during mango season</li>
+                        </ul>
+                        
+                        <h4>Monsoon Specials</h4>
+                        <p>The rainy season has its own set of comforting sweets:</p>
+                        <ul>
+                            <li><strong>Hot Jalebi:</strong> Crispy spirals soaked in syrup, perfect with rainy weather</li>
+                            <li><strong>Malpua:</strong> Sweet pancakes often served with rabri</li>
+                            <li><strong>Puran Poli:</strong> Sweet flatbreads filled with lentil and jaggery mixture</li>
+                            <li><strong>Rasmalai:</strong> Soft cheese patties in flavored milk, served chilled</li>
+                        </ul>
+                        
+                        <h4>Festival Calendar</h4>
+                        <p>Our sweet offerings change throughout the year to align with the festival calendar:</p>
+                        <ul>
+                            <li><strong>January:</strong> Sankranti specials like Til Ladoo and Rewdi</li>
+                            <li><strong>March:</strong> Holi favorites like Gujiya and Thandai</li>
+                            <li><strong>August:</strong> Rakhi specials like Coconut Ladoo and Kheer</li>
+                            <li><strong>October:</strong> Diwali assortment with premium dry fruit sweets</li>
+                            <li><strong>November:</strong> Chhath Puja offerings like Thekua and Rasiyaaw</li>
+                        </ul>
+                        
+                        <p>Visit us throughout the year to experience the changing seasons through our rotating selection of traditional Indian sweets!</p>
+                    </div>
+                `
+            },
+            6: {
+                title: "Our Journey: Preserving Authentic Indian Sweet Recipes",
+                author: "Founder Rajesh",
+                date: "January 5, 2023",
+                imageColor: "#e6ffe6",
+                icon: "fa-heart",
+                content: `
+                    <div class="blog-detail-image" style="background-color: #e6ffe6;">
+                        <i class="fas fa-heart" style="font-size: 100px; color: #d46a6a;"></i>
+                    </div>
+                    <div class="blog-detail-meta">
+                        <span><i class="far fa-calendar"></i> January 5, 2023</span>
+                        <span><i class="far fa-user"></i> Founder Rajesh</span>
+                    </div>
+                    <div class="blog-detail-content">
+                        <p>This year marks the 15th anniversary of Sweet Delights, and I've been reflecting on our incredible journey from a small family operation to the beloved sweet shop we are today. Our story is one of passion, tradition, and a deep commitment to preserving India's rich sweet-making heritage.</p>
+                        
+                        <h4>Humble Beginnings</h4>
+                        <p>It all started in 2008 in my grandmother's kitchen. She was a master at creating traditional sweets, with recipes passed down through generations. Friends and family constantly encouraged us to share these delights with a wider audience.</p>
+                        
+                        <p>We began taking small orders for festivals and special occasions, working around our day jobs. I'll never forget the first Diwali when we received 50 orders for our special gift boxes - we worked through the night to fulfill them all!</p>
+                        
+                        <h4>Honoring Tradition</h4>
+                        <p>From the beginning, we committed to using traditional methods and recipes:</p>
+                        <ul>
+                            <li>Slow-cooking milk to create khoya the traditional way</li>
+                            <li>Using copper vessels for certain preparations as generations before us did</li>
+                            <li>Sourcing ingredients from trusted local suppliers</li>
+                            <li>Preparing sweets in small batches to ensure quality</li>
+                            <li>Using natural colorings and flavorings instead of artificial additives</li>
+                        </ul>
+                        
+                        <p>This commitment to authenticity quickly set us apart in a market increasingly dominated by mass-produced sweets.</p>
+                        
+                        <h4>Growth & Recognition</h4>
+                        <p>By 2015, demand had outgrown our home kitchen. We opened our first shop while carefully maintaining our traditional methods. We brought on skilled halwais (sweet makers) who shared our passion for authenticity.</p>
+                        
+                        <p>Despite challenges, including the pandemic years, we adapted with online ordering and delivery while maintaining our quality standards. Our commitment to tradition actually became our strength during this time, as people sought comfort in authentic homemade sweets.</p>
+                        
+                        <h4>Looking Ahead</h4>
+                        <p>As we celebrate this milestone, we're planning some exciting developments:</p>
+                        <ul>
+                            <li>Documenting and preserving rare regional sweet recipes</li>
+                            <li>Creating a training program for aspiring halwais</li>
+                            <li>Developing healthier versions of classic sweets for modern dietary needs</li>
+                            <li>Expanding our online presence to share Indian sweet culture globally</li>
+                            <li>Creating experiential sweet-making workshops for visitors</li>
+                        </ul>
+                        
+                        <p>Thank you to all our loyal customers who have supported us on this sweet journey. Here's to many more years of preserving and sharing India's delicious sweet heritage!</p>
+                    </div>
+                `
+            }
+        };
+
+        // Open blog detail modal
+        readMoreLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const blogId = this.getAttribute('data-blog-id');
+                showBlogDetail(blogId);
+            });
+        });
+
+        // Close modal when clicking X
+        closeModalBtn.addEventListener('click', function() {
+            blogModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close modal when clicking outside content
+        blogModal.addEventListener('click', function(e) {
+            if (e.target === blogModal) {
+                blogModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Function to show blog detail
+        function showBlogDetail(blogId) {
+            const blog = blogContent[blogId];
+            if (blog) {
+                blogDetailContent.innerHTML = `
+                    <h2>${blog.title}</h2>
+                    ${blog.content}
+                `;
+                blogModal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // FAQ toggle functionality
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>
